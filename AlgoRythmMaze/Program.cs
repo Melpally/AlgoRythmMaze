@@ -1,11 +1,21 @@
+using AlgoRythmMaze.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace AlgoRythmMaze
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            var connString = builder.Configuration.GetConnectionString("Database") ?? throw new ArgumentNullException("Connection string is not defined");
+            builder.Services.AddDbContextPool<AlgoRythmDbContext>(
+                options => options.UseSqlServer(connString,
+                    builder =>
+                    {
+                        builder.MigrationsAssembly("AlgoRythmMaze.Infrastructure");
+                    }));
 
             // Add services to the container.
 
@@ -15,6 +25,12 @@ namespace AlgoRythmMaze
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<AlgoRythmDbContext>();
+                await db.Database.MigrateAsync();
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
