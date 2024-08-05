@@ -6,5 +6,6 @@
         public int TopicId { get; set; }
         public int OrderNumber { get; set; }
         public required string Text { get; set; }
+        public ICollection<UserProfile>? UserProfiles { get; set; }
     }
 }
