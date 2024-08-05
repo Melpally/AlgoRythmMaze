@@ -9,13 +9,7 @@ namespace AlgoRythmMaze.Infrastructure.Configurations
         public void Configure(EntityTypeBuilder<Challenge> builder)
         {
             builder
-                .Property(challenge => challenge.Id)
-                .UseIdentityColumn()
-                .IsRequired();
-
-            builder
                 .Property(challenge => challenge.Description)
-                .HasMaxLength(2000)
                 .IsRequired();
 
             builder
@@ -28,6 +22,11 @@ namespace AlgoRythmMaze.Infrastructure.Configurations
                 .WithOne(x => x.Challenge)
                 .HasForeignKey(x => x.ChallengeId)
                 .OnDelete(DeleteBehavior.SetNull);
+
+            builder
+                .HasMany(x => x.Topics)
+                .WithMany(x => x.Challenges)
+                .UsingEntity<ChallengeTopicXP>();
         }
     }
 }

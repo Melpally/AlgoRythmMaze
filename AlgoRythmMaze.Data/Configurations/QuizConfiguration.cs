@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AlgoRythmMaze.Domain.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AlgoRythmMaze.Infrastructure.Configurations
 {
-    internal class QuizConfiguration
+    public class QuizConfiguration : IEntityTypeConfiguration<Quiz>
     {
+        public void Configure(EntityTypeBuilder<Quiz> builder)
+        {
+            builder
+                .HasOne(x => x.Topic)
+                .WithMany(x => x.Quizzes)
+                .HasForeignKey(x => x.TopicId);
+        }
     }
 }

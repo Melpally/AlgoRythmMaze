@@ -9,24 +9,24 @@ namespace AlgoRythmMaze.Infrastructure.Configurations
         public void Configure(EntityTypeBuilder<Submission> builder)
         {
             builder
-                .Property(comment => comment.Id)
-                .UseIdentityColumn()
-                .IsRequired();
-
-            builder
-                .Property(submission => submission.SubmittedCode)
+                .Property(x => x.SubmittedCode)
                 .HasMaxLength(2000);
 
             builder
-                .Property(comment => comment.TimeSubmitted)
+                .Property(x => x.TimeSubmitted)
                 .HasDefaultValueSql("GETDATE()")
                 .HasPrecision(0);
 
-            //user + challenge
             builder
-                .HasMany(x => x)
-                .WithOne(x => x.ThreadStartingComment)
-                .HasForeignKey(x => x.ThreadCommentId)
+                .HasOne(x => x.User)
+                .WithMany(x => x.Submissions)
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder
+                .HasOne(x => x.Challenge)
+                .WithMany(x => x.Submissions)
+                .HasForeignKey(x => x.ChallengeId)
                 .OnDelete(DeleteBehavior.SetNull);
         }
     }
