@@ -26,8 +26,7 @@ namespace AlgoRythmMaze.Infrastructure.Configurations
             builder
                 .HasOne(x => x.Challenge)
                 .WithMany(x => x.Submissions)
-                .HasForeignKey(x => x.ChallengeId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .HasForeignKey(x => x.ChallengeId);
         }
     }
 }

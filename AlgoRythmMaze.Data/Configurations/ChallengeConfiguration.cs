@@ -20,8 +20,7 @@ namespace AlgoRythmMaze.Infrastructure.Configurations
             builder
                 .HasMany(x => x.TestCases)
                 .WithOne(x => x.Challenge)
-                .HasForeignKey(x => x.ChallengeId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .HasForeignKey(x => x.ChallengeId);
 
             builder
                 .HasMany(x => x.Topics)

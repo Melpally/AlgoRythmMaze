@@ -2,7 +2,7 @@
 
 namespace AlgoRythmMaze.Domain.Models
 {
-    public class User : IdentityUser
+    public class User : IdentityUser<int>
     {
         public required UserProfile Profile { get; set; }
     }

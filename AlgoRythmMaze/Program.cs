@@ -43,7 +43,6 @@ namespace AlgoRythmMaze
 
             app.UseAuthorization();
 
-
             app.MapControllers();
 
             app.Run();

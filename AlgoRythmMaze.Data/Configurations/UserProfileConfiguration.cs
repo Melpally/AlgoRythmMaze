@@ -38,7 +38,7 @@ namespace AlgoRythmMaze.Infrastructure.Configurations
             builder
                 .HasOne(x => x.User)
                 .WithOne(x => x.Profile)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder
                 .HasMany(x => x.Topics)
