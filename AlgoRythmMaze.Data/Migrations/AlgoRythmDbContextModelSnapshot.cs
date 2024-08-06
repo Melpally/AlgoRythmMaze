@@ -44,15 +44,12 @@ namespace AlgoRythmMaze.Infrastructure.Migrations
                     b.Property<int>("InterestId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UsersUserId")
+                    b.Property<int>("UserProfilesUserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.HasKey("InterestId", "UserProfilesUserId");
 
-                    b.HasKey("InterestId", "UsersUserId");
-
-                    b.HasIndex("UsersUserId");
+                    b.HasIndex("UserProfilesUserId");
 
                     b.ToTable("InterestUsers");
                 });
@@ -63,9 +60,6 @@ namespace AlgoRythmMaze.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("UserProfilesUserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("LearningMaterialId", "UserProfilesUserId");
@@ -341,9 +335,6 @@ namespace AlgoRythmMaze.Infrastructure.Migrations
                     b.Property<int>("UserProfilesUserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.Property<int>("XP")
                         .HasColumnType("int");
 
@@ -590,7 +581,7 @@ namespace AlgoRythmMaze.Infrastructure.Migrations
 
                     b.HasOne("AlgoRythmMaze.Domain.Models.UserProfile", null)
                         .WithMany()
-                        .HasForeignKey("UsersUserId")
+                        .HasForeignKey("UserProfilesUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

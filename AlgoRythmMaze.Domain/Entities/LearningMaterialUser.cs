@@ -2,7 +2,7 @@
 {
     public class LearningMaterialUser
     {
-        public int UserId { get; set; }
+        public int UserProfilesUserId { get; set; }
         public int LearningMaterialId { get; set; }
         
     }

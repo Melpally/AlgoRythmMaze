@@ -5,7 +5,7 @@
     /// </summary>
     public class TopicXP
     {
-        public int UserId { get; set; }
+        public int UserProfilesUserId { get; set; }
         public int TopicId { get; set; }
         public int XP { get; set; }
     }

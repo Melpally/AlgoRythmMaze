@@ -27,7 +27,7 @@ namespace AlgoRythmMaze.Infrastructure.Configurations
 
             builder
                 .HasMany(x => x.Interests)
-                .WithMany(x => x.Users)
+                .WithMany(x => x.UserProfiles)
                 .UsingEntity<InterestUser>();
 
             builder

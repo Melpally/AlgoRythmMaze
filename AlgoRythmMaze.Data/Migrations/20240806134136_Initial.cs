@@ -390,13 +390,12 @@ namespace AlgoRythmMaze.Infrastructure.Migrations
                 name: "InterestUsers",
                 columns: table => new
                 {
-                    InterestId = table.Column<int>(type: "int", nullable: false),
-                    UsersUserId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    UserProfilesUserId = table.Column<int>(type: "int", nullable: false),
+                    InterestId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InterestUsers", x => new { x.InterestId, x.UsersUserId });
+                    table.PrimaryKey("PK_InterestUsers", x => new { x.InterestId, x.UserProfilesUserId });
                     table.ForeignKey(
                         name: "FK_InterestUsers_Interests_InterestId",
                         column: x => x.InterestId,
@@ -404,8 +403,8 @@ namespace AlgoRythmMaze.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_InterestUsers_UserProfiles_UsersUserId",
-                        column: x => x.UsersUserId,
+                        name: "FK_InterestUsers_UserProfiles_UserProfilesUserId",
+                        column: x => x.UserProfilesUserId,
                         principalTable: "UserProfiles",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
@@ -415,9 +414,8 @@ namespace AlgoRythmMaze.Infrastructure.Migrations
                 name: "LearningMaterialUsers",
                 columns: table => new
                 {
-                    LearningMaterialId = table.Column<int>(type: "int", nullable: false),
                     UserProfilesUserId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    LearningMaterialId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -470,9 +468,8 @@ namespace AlgoRythmMaze.Infrastructure.Migrations
                 name: "TopicXPs",
                 columns: table => new
                 {
-                    TopicId = table.Column<int>(type: "int", nullable: false),
                     UserProfilesUserId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
+                    TopicId = table.Column<int>(type: "int", nullable: false),
                     XP = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -547,9 +544,9 @@ namespace AlgoRythmMaze.Infrastructure.Migrations
                 column: "ChallengeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InterestUsers_UsersUserId",
+                name: "IX_InterestUsers_UserProfilesUserId",
                 table: "InterestUsers",
-                column: "UsersUserId");
+                column: "UserProfilesUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LearningMaterialUsers_UserProfilesUserId",
