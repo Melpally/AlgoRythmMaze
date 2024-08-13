@@ -1,11 +1,11 @@
 ﻿using AlgoRythmMaze.Domain.Entities;
 using AlgoRythmMaze.Domain.Models;
-using AlgoRythmMaze.Infrastructure.Configurations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using AlgoRythmMaze.Infrastructure.Data.Configurations;
 
-namespace AlgoRythmMaze.Infrastructure
+namespace AlgoRythmMaze.Infrastructure.Data
 {
     public class AlgoRythmDbContext : IdentityDbContext<User, IdentityRole<int>, int>
     {

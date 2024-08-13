@@ -1,9 +1,8 @@
 ﻿namespace AlgoRythmMaze.Domain.Entities
 {
-    public class LearningMaterialUser
+    public class CourseMaterial
     {
-        public int UserProfilesUserId { get; set; }
         public int LearningMaterialId { get; set; }
-        
+        public int CourseId { get; set; }
     }
 }

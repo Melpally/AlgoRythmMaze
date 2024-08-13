@@ -1,4 +1,4 @@
-using AlgoRythmMaze.Infrastructure;
+using AlgoRythmMaze.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace AlgoRythmMaze

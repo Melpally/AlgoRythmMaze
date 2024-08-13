@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AlgoRythmMaze.Infrastructure.Configurations
+namespace AlgoRythmMaze.Infrastructure.Data.Configurations
 {
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {

@@ -3,7 +3,7 @@ using AlgoRythmMaze.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AlgoRythmMaze.Infrastructure.Configurations
+namespace AlgoRythmMaze.Infrastructure.Data.Configurations
 {
     public class UserProfileConfiguration : IEntityTypeConfiguration<UserProfile>
     {
@@ -16,14 +16,6 @@ namespace AlgoRythmMaze.Infrastructure.Configurations
                 .HasMany(x => x.LearningMaterials)
                 .WithMany(x => x.UserProfiles)
                 .UsingEntity<LearningMaterialUser>();
-
-            builder
-                .Property(x => x.IsLevelDetermined)
-                .HasDefaultValue(false);
-
-            builder
-                .Property(x => x.IsPremiumSubscriber)
-                .HasDefaultValue(false);
 
             builder
                 .HasMany(x => x.Interests)
@@ -44,6 +36,11 @@ namespace AlgoRythmMaze.Infrastructure.Configurations
                 .HasMany(x => x.Topics)
                 .WithMany(x => x.UserProfiles)
                 .UsingEntity<TopicXP>();
+
+            builder
+                .HasMany(x => x.Courses)
+                .WithMany (x => x.UserProfiles)
+                .UsingEntity<CourseUser>();
         }
     }
 }

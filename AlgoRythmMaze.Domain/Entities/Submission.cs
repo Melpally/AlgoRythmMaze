@@ -5,10 +5,11 @@ namespace AlgoRythmMaze.Domain.Models
     public class Submission
     {
         public int Id { get; set; }
-        public required Status Status { get; set; } 
+        public Status Status { get; set; }
+        public string? Result { get; set; }
+        public int AttemptCount { get; set; } = 0;
         public DateTime TimeSubmitted { get; set; }
         public required string SubmittedCode { get; set; }
-        public string? Result {  get; set; }
 
         public int UserId { get; set; }
         public UserProfile? User { get; set; }
