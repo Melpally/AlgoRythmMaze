@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AlgoRythmMaze.Infrastructure.Data.Configurations
 {
-    public class ChallengeConfiguration : IEntityTypeConfiguration<Challenge>
+    public class ChallengeConfiguration : IEntityTypeConfiguration<Project>
     {
-        public void Configure(EntityTypeBuilder<Challenge> builder)
+        public void Configure(EntityTypeBuilder<Project> builder)
         {
             builder
                 .Property(challenge => challenge.Description)
@@ -26,7 +26,7 @@ namespace AlgoRythmMaze.Infrastructure.Data.Configurations
             builder
                 .HasMany(x => x.Topics)
                 .WithMany(x => x.Challenges)
-                .UsingEntity<ChallengeTopicXP>();
+                .UsingEntity<ProjectTopicXP>();
 
             builder
                 .HasMany(x => x.Courses)

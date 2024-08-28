@@ -7,7 +7,6 @@
         CheckPending,
         Failed,
         Error,
-        Submitted,
         Finished
     }
 }

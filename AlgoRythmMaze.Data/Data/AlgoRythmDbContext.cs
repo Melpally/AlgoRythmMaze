@@ -29,8 +29,8 @@ namespace AlgoRythmMaze.Infrastructure.Data
         public DbSet<Interest> Interests { get; set; }
         public DbSet<InterestUser> InterestUsers { get; set; }
         public DbSet<Hint> Hints { get; set; }
-        public DbSet<Challenge> Challenges { get; set; }
-        public DbSet<ChallengeTopicXP> ChallengeTopics { get; set; }
+        public DbSet<Project> Challenges { get; set; }
+        public DbSet<ProjectTopicXP> ChallengeTopics { get; set; }
         public DbSet<Badge> Badges { get; set; }
         public DbSet<BadgeUserProfile> BadgesUserProfiles { get; set; }
 
