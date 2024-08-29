@@ -4,9 +4,9 @@ using AlgoRythmMaze.Infrastructure.Data;
 
 namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
 {
-    public class ChallengeRepository : BaseRepository<Project>, IChallengeRepository
+    public class QuizRepository : BaseRepository<Quiz>, IQuizRepository
     {
-        public ChallengeRepository(AlgoRythmDbContext context) : base(context)
+        public QuizRepository(AlgoRythmDbContext context) : base(context)
         {
         }
     }

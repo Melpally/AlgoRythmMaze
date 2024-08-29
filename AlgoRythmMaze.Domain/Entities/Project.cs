@@ -5,7 +5,6 @@ namespace AlgoRythmMaze.Domain.Models
     public class Project
     {
         public int Id { get; set; }
-        public int CourseId { get; set; }
         public Status Status { get; set; }
         public required string Title { get; set; }
         public required string RepositoryLink { get; set; }

@@ -13,11 +13,6 @@ namespace AlgoRythmMaze.Infrastructure.Data.Configurations
                 .HasKey(x => x.UserId);
 
             builder
-                .HasMany(x => x.LearningMaterials)
-                .WithMany(x => x.UserProfiles)
-                .UsingEntity<LearningMaterialUser>();
-
-            builder
                 .HasMany(x => x.Interests)
                 .WithMany(x => x.UserProfiles)
                 .UsingEntity<InterestUser>();
@@ -29,8 +24,7 @@ namespace AlgoRythmMaze.Infrastructure.Data.Configurations
 
             builder
                 .HasOne(x => x.User)
-                .WithOne(x => x.Profile)
-                .OnDelete(DeleteBehavior.Cascade);
+                .WithOne(x => x.Profile);
 
             builder
                 .HasMany(x => x.Topics)
@@ -39,7 +33,7 @@ namespace AlgoRythmMaze.Infrastructure.Data.Configurations
 
             builder
                 .HasMany(x => x.Courses)
-                .WithMany (x => x.UserProfiles)
+                .WithMany(x => x.UserProfiles)
                 .UsingEntity<CourseUser>();
         }
     }

@@ -15,7 +15,6 @@ namespace AlgoRythmMaze.Domain.Entities
 
         public ICollection<Topic>? Topics { get; set; }
         public ICollection<Review>? Reviews { get; set; }
-        public ICollection<Project>? Projects { get; set; }
         public ICollection<UserProfile>? UserProfiles { get; set; }
     }
 }

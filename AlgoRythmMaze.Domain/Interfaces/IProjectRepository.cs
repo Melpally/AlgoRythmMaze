@@ -2,7 +2,7 @@
 
 namespace AlgoRythmMaze.Domain.Interfaces
 {
-    public interface ISubmissionRepository : IBaseRepository<Submission>
+    public interface IProjectRepository : IBaseRepository<Project>
     {
     }
 }

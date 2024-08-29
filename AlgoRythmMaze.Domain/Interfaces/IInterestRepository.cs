@@ -2,7 +2,7 @@
 
 namespace AlgoRythmMaze.Domain.Interfaces
 {
-    public interface ICourseMaterialRepository : IBaseRepository<CourseMaterial>
+    public interface IInterestRepository : IBaseRepository<Interest>
     {
     }
 }
