@@ -15,7 +15,7 @@ namespace AlgoRythmMaze.Infrastructure.Data.Configurations
             builder
                 .HasMany(x => x.Interests)
                 .WithMany(x => x.UserProfiles)
-                .UsingEntity<InterestUser>();
+                .UsingEntity<CaregiverService>();
 
             builder
                 .HasMany(x => x.Badges)

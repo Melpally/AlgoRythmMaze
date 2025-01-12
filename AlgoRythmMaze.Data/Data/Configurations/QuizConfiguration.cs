@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AlgoRythmMaze.Infrastructure.Data.Configurations
 {
-    public class QuizConfiguration : IEntityTypeConfiguration<Quiz>
+    public class QuizConfiguration : IEntityTypeConfiguration<CaregiverProfile>
     {
-        public void Configure(EntityTypeBuilder<Quiz> builder)
+        public void Configure(EntityTypeBuilder<CaregiverProfile> builder)
         {
             builder
                 .HasOne(x => x.Topic)

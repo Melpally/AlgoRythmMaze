@@ -4,9 +4,9 @@ using AlgoRythmMaze.Infrastructure.Data;
 
 namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
 {
-    public class QuizRepository : BaseRepository<Quiz>, IQuizRepository
+    public class QuizRepository : BaseRepository<CaregiverProfile>, IQuizRepository
     {
-        public QuizRepository(AlgoRythmDbContext context) : base(context)
+        public QuizRepository(DbContext context) : base(context)
         {
         }
     }

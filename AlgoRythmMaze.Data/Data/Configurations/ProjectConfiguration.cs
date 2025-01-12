@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AlgoRythmMaze.Infrastructure.Data.Configurations
 {
-    public class ProjectConfiguration : IEntityTypeConfiguration<Project>
+    public class ProjectConfiguration : IEntityTypeConfiguration<Payment>
     {
-        public void Configure(EntityTypeBuilder<Project> builder)
+        public void Configure(EntityTypeBuilder<Payment> builder)
         {
             builder
                 .Property(project => project.Title)

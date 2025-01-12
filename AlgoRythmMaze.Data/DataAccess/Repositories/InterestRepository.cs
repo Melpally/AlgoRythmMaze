@@ -4,9 +4,9 @@ using AlgoRythmMaze.Infrastructure.Data;
 
 namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
 {
-    public class InterestRepository : BaseRepository<Interest>, IInterestRepository
+    public class InterestRepository : BaseRepository<Service>, IInterestRepository
     {
-        public InterestRepository(AlgoRythmDbContext context) : base(context)
+        public InterestRepository(DbContext context) : base(context)
         {
         }
     }

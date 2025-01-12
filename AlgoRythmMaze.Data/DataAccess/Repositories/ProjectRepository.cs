@@ -4,9 +4,9 @@ using AlgoRythmMaze.Infrastructure.Data;
 
 namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
 {
-    public class ProjectRepository : BaseRepository<Project>, IProjectRepository
+    public class ProjectRepository : BaseRepository<Payment>, IProjectRepository
     {
-        public ProjectRepository(AlgoRythmDbContext context) : base(context)
+        public ProjectRepository(DbContext context) : base(context)
         {
         }
     }

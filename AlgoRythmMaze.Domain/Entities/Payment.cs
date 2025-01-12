@@ -2,7 +2,7 @@
 
 namespace AlgoRythmMaze.Domain.Models
 {
-    public class Project
+    public class Payment
     {
         public int Id { get; set; }
         public Status Status { get; set; }

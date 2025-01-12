@@ -6,7 +6,7 @@ namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
 {
     public class CourseRepository : BaseRepository<Course>, ICourseRepository
     {
-        public CourseRepository(AlgoRythmDbContext context) : base(context)
+        public CourseRepository(DbContext context) : base(context)
         {
         }
     }

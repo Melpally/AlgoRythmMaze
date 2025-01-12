@@ -6,7 +6,7 @@ namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
 {
     public class HintRepository : BaseRepository<Hint>, IHintRepository
     {
-        public HintRepository(AlgoRythmDbContext context) : base(context)
+        public HintRepository(DbContext context) : base(context)
         {
         }
     }

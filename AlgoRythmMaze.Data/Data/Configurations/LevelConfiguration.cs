@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AlgoRythmMaze.Infrastructure.Data.Configurations
 {
-    public class LevelConfiguration : IEntityTypeConfiguration<Level>
+    public class LevelConfiguration : IEntityTypeConfiguration<Booking>
     {
-        public void Configure(EntityTypeBuilder<Level> builder)
+        public void Configure(EntityTypeBuilder<Booking> builder)
         {
             builder
                 .Property(x => x.Id)

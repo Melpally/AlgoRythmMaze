@@ -10,7 +10,7 @@ namespace AlgoRythmMaze
             var builder = WebApplication.CreateBuilder(args);
 
             var connString = builder.Configuration.GetConnectionString("Database") ?? throw new ArgumentNullException("Connection string is not defined");
-            builder.Services.AddDbContextPool<AlgoRythmDbContext>(
+            builder.Services.AddDbContextPool<Infrastructure.Data.DbContext>(
                 options => options.UseSqlServer(connString,
                     builder =>
                     {
@@ -28,7 +28,7 @@ namespace AlgoRythmMaze
 
             using (var scope = app.Services.CreateScope())
             {
-                var db = scope.ServiceProvider.GetRequiredService<AlgoRythmDbContext>();
+                var db = scope.ServiceProvider.GetRequiredService<Infrastructure.Data.DbContext>();
                 await db.Database.MigrateAsync();
             }
 

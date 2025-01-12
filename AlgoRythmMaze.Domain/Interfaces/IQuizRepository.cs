@@ -2,7 +2,7 @@
 
 namespace AlgoRythmMaze.Domain.Interfaces
 {
-    public interface IQuizRepository : IBaseRepository<Quiz>
+    public interface IQuizRepository : IBaseRepository<CaregiverProfile>
     {
     }
 }

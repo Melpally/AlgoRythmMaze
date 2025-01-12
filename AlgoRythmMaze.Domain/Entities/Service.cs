@@ -2,7 +2,7 @@
 
 namespace AlgoRythmMaze.Domain.Entities
 {
-    public class Interest
+    public class Service
     {
         public int Id { get; set; }
         public required string Name { get; set; }

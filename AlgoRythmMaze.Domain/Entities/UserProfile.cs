@@ -7,7 +7,7 @@ namespace AlgoRythmMaze.Domain.Models
         public string? GitHubProfileLink { get; set; }
 
         public int LevelId { get; set; }
-        public Level? Level { get; set; }
+        public Booking? Level { get; set; }
 
         public int UserId { get; set; }
         public required User User { get; set; }
@@ -20,6 +20,6 @@ namespace AlgoRythmMaze.Domain.Models
         public ICollection<Topic>? Topics { get; set; }
         public ICollection<Review>? Reviews { get; set; }
         public ICollection<Course>? Courses { get; set; }
-        public ICollection<Interest>? Interests { get; set; }
+        public ICollection<Service>? Interests { get; set; }
     }
 }

@@ -6,7 +6,7 @@ namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
 {
     public class BadgeRepository : BaseRepository<Badge>, IBadgeRepository
     {
-        public BadgeRepository(AlgoRythmDbContext context) : base(context)
+        public BadgeRepository(DbContext context) : base(context)
         {
         }
     }
