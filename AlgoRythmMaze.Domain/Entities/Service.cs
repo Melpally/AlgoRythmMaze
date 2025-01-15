@@ -6,6 +6,8 @@ namespace AlgoRythmMaze.Domain.Entities
     {
         public int Id { get; set; }
         public required string Name { get; set; }
-        public ICollection<UserProfile>? UserProfiles { get; set; }
+        public required string Description { get; set; }
+        public ICollection<CaregiverProfile>? Caregivers { get; set; }
+        public ICollection<ClientProfile>? Clients { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace AlgoRythmMaze.Infrastructure.Data
 {
     public class DbContext : IdentityDbContext<User, IdentityRole<int>, int>
@@ -12,12 +13,14 @@ namespace AlgoRythmMaze.Infrastructure.Data
         public DbContext(DbContextOptions<DbContext> options) : base(options) { }
 
         public DbContext() { }
-        public DbSet<CaregiverProfile> Quizzes { get; set; }
-        public DbSet<Booking> Levels { get; set; }
-        public DbSet<Payment> Projects { get; set; }
-        public DbSet<Service> Interests { get; set; }
-        public DbSet<UserProfile> UserProfiles { get; set; }
-        public DbSet<CaregiverService> InterestUsers { get; set; }
+
+        public DbSet<Skill> Skills { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<ClientProfile> ClientProfiles { get; set; }
+        public DbSet<CaregiverProfile> CaregiverProfiles { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

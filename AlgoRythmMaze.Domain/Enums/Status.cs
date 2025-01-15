@@ -2,11 +2,11 @@
 {
     public enum Status
     {
-        ReadyToStart,
+        New,
         InProgress,
         CheckPending,
         Failed,
-        Error,
-        Finished
+        Approved,
+        Unapproved
     }
 }
