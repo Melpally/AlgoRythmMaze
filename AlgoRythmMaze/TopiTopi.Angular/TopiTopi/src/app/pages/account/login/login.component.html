@@ -1,0 +1,69 @@
+<app-popup-error [header]="'Something went wrong!'" [message]="loginError" (showFlagChange)="errorShowFlagChange($event)" *ngIf="errorMessageShow"></app-popup-error>
+<div class="main-container">
+  <div class="header-container">
+    <p class="account-header">Login</p>
+    <div class="account-subheader">
+      <p>
+        Unlock the Door to Comfort:
+        <br />
+        Your Home, Your Rent, Your Peace
+      </p>
+    </div>
+  </div>
+  <div class="input-form">
+    <form class="input-form" [formGroup]="logInForm" (ngSubmit)="onSubmit()">
+
+      <span class="p-float-label">
+        <input pInputText type="email" maxlength="64" formControlName="Email"
+          [ngClass]="{'p-inputtext-invalid': logInForm.controls['Email'].invalid && emailVisited}"
+          (blur)="emailVisited=true" (input)="emailVisited=false">
+        <label [ngClass]="{'p-invalid': logInForm.controls['Email'].invalid && emailVisited}">Email*</label>
+        <span *ngIf="logInForm.controls['Email'].invalid && emailVisited">
+          <app-input-error *ngIf="logInForm.controls['Email'].errors?.['required']">Email is required.</app-input-error>
+          <app-input-error *ngIf="logInForm.controls['Email'].errors?.['email']">Invalid email format.</app-input-error>
+          <app-input-error *ngIf="logInForm.controls['Email'].errors?.['maxlength']">Email cannot be more than 64 characters.</app-input-error>
+        </span>
+      </span>
+
+      <span class="p-float-label">
+        <p-password class="full-width" [feedback]="false" [toggleMask]='true' formControlName="Password"
+          [ngClass]="{'p-inputtext-invalid': logInForm.controls['Password'].invalid && passwordVisited}"
+          (onBlur)="passwordVisited=true" (input)="passwordVisited=false"></p-password>
+        <label [ngClass]="{'p-invalid': logInForm.controls['Password'].invalid && passwordVisited}">Password*</label>
+        <span *ngIf="logInForm.controls['Password'].invalid && passwordVisited">
+          <app-input-error *ngIf="logInForm.controls['Password'].errors?.['required']">Password is required.</app-input-error>
+          <app-input-error *ngIf="logInForm.controls['Password'].errors?.['minlength']">Password must be at least 8 characters.</app-input-error>
+          <app-input-error *ngIf="logInForm.controls['Password'].errors?.['maxlength']">Password cannot be more than 64 characters.</app-input-error>
+        </span>
+      </span>
+
+      <div class="button-container">
+        <button class="button-primary-stretched" type="submit"
+          [class.button-disabled]="logInForm.invalid && (emailVisited || passwordVisited)"
+          [disabled]="logInForm.invalid && (emailVisited || passwordVisited)">
+          Log in
+        </button>
+
+        <div class="account-link">
+          <a class="text-link" routerLink="/account/forgot-password">Forgot Password?</a>
+        </div>
+        <div class="account-link">
+          <p class="text-secondary">Don't have an account? <a class="text-link" routerLink="/account/sign-up">Sign up</a></p>
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <div class="line-gradient"></div>
+  <button class="button-outlined-secondary-stretched">
+    <img ngSrc="assets/icons/google.svg" alt="google" height="24" width="24">
+    Sign in with Google
+  </button>
+  <div class="privacy-container">
+    <p>
+      By signing up to create an account I accept
+      <br />
+      Company's <a routerLink="">Terms of Use and Privacy Policy</a>
+    </p>
+  </div>
+</div>

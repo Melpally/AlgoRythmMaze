@@ -1,12 +1,12 @@
-﻿using AlgoRythmMaze.Domain.Entities;
+﻿using AlgoRythmMaze.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AlgoRythmMaze.Infrastructure.Data.Configurations
 {
-    public class ReviewConfiguration : IEntityTypeConfiguration<Review>
+    public class PaymentConfiguration : IEntityTypeConfiguration<Payment>
     {
-        public void Configure(EntityTypeBuilder<Review> builder)
+        public void Configure(EntityTypeBuilder<Payment> builder)
         {
             builder
                 .Property(x => x.CreatedAt)

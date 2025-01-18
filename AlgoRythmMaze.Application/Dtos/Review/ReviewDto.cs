@@ -1,8 +1,6 @@
-﻿using AlgoRythmMaze.Domain.Models;
-
-namespace AlgoRythmMaze.Domain.Entities
+﻿namespace TopiTopi.Application.Dtos.Review
 {
-    public class Review
+    public class ReviewDto
     {
         public int Id { get; set; }
         public int Rating { get; set; }
@@ -11,7 +9,6 @@ namespace AlgoRythmMaze.Domain.Entities
         public DateTime CreatedAt { get; set; }
         public required string Text { get; set; }
         public required string Title { get; set; }
-        public ClientProfile? Client { get; set; }
-        public CaregiverProfile? Caregiver { get; set; }
+                
     }
 }

@@ -1,4 +1,4 @@
-using AlgoRythmMaze.Infrastructure.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace AlgoRythmMaze
@@ -28,6 +28,24 @@ namespace AlgoRythmMaze
 
             using (var scope = app.Services.CreateScope())
             {
+                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                var roles = builder.Configuration.GetSection("Roles").Get<List<string>>();
+
+                if (roles != null)
+                {
+                    foreach (var role in roles)
+                    {
+                        if (!await roleManager.RoleExistsAsync(role))
+                        {
+                            await roleManager.CreateAsync(new IdentityRole(role));
+                        }
+                    }
+                }
+                else
+                {
+                    throw new ArgumentNullException("Roles", "The roles were not provided.");
+                }
+
                 var db = scope.ServiceProvider.GetRequiredService<Infrastructure.Data.DbContext>();
                 await db.Database.MigrateAsync();
             }

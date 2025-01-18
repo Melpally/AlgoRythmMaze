@@ -1,0 +1,158 @@
+<app-popup-error *ngIf="errorMessageShow" [header]="'Error occurred on signing up!'" [message]="errorMessage"
+    (showFlagChange)="showErrorPopup($event)"></app-popup-error>
+<div class="main-container" *ngIf="!showRoleSelection">
+    <div class="header-container">
+        <p class="account-header">Sign up</p>
+        <div class="account-subheader">
+            <p>
+                Unlock the Door to Comfort:
+                <br />
+                Your Home, Your Rent, Your Peace
+            </p>
+        </div>
+    </div>
+
+    <form class="input-form" [formGroup]="form">
+
+        <span class="p-float-label">
+            <input pInputText minlength="2" maxlength="50" formControlName="Fullname"
+                [ngClass]="{'p-inputtext-invalid': isInvalid('Fullname') && fullnameVisited}"
+                (blur)="fullnameVisited=true" (input)="fullnameVisited=false">
+            <label [ngClass]="{'p-invalid': isInvalid('Fullname') && fullnameVisited}">Fullname*</label>
+            <span *ngIf="isInvalid('Fullname') && fullnameVisited">
+                <app-input-error *ngIf="hasError('Fullname', 'required')">Fullname is required.</app-input-error>
+                <app-input-error *ngIf="hasError('Fullname', 'minlength')">Fullname must be at least 2
+                    characters.</app-input-error>
+                <app-input-error *ngIf="hasError('Fullname', 'maxlength')">Fullname cannot be more than 50
+                    characters.</app-input-error>
+            </span>
+        </span>
+
+        <span class="p-float-label">
+            <input pInputText type="email" minlength="6" maxlength="44" formControlName="Email"
+                [ngClass]="{'p-inputtext-invalid': isInvalid('Email') && emailVisited}" (blur)="emailVisited=true"
+                (input)="emailVisited=false">
+            <label [ngClass]="{'p-invalid': isInvalid('Email') && emailVisited}">Email*</label>
+            <span *ngIf="isInvalid('Email') && emailVisited">
+                <app-input-error *ngIf="hasError('Email', 'required')">Email is required.</app-input-error>
+                <app-input-error *ngIf="hasError('Email', 'email')">Invalid email format.</app-input-error>
+                <app-input-error *ngIf="hasError('Email', 'minlength')">Email must be at least 6
+                    characters.</app-input-error>
+                <app-input-error *ngIf="hasError('Email', 'maxlength')">Email cannot be more than 44
+                    characters.</app-input-error>
+            </span>
+        </span>
+
+        <span class="p-float-label">
+            <input pInputText type="tel" minlength="13" maxlength="13" formControlName="Phone"
+                [ngClass]="{'p-inputtext-invalid': isInvalid('Phone') && phoneVisited}" (blur)="phoneVisited=true"
+                (input)="phoneVisited=false">
+            <label [ngClass]="{'p-invalid': isInvalid('Phone') && phoneVisited}">Phone*</label>
+            <span *ngIf="isInvalid('Phone') && phoneVisited">
+                <app-input-error *ngIf="hasError('Phone', 'required')">Phone is required.</app-input-error>
+                <app-input-error *ngIf="hasError('Phone', 'pattern')">Invalid phone format.
+                    (+998991234567)</app-input-error>
+            </span>
+        </span>
+
+        <span class="p-float-label">
+            <p-password class="full-width" formControlName="Password" minlength="8" maxlength="128" [feedback]="false"
+                [toggleMask]='true' [ngClass]="{'p-inputtext-invalid': isInvalid('Password')}">
+            </p-password>
+            <label [ngClass]="{'p-invalid': isInvalid('Password')}">Password*</label>
+            <span *ngIf="isInvalid('Password')">
+                <app-input-error *ngIf="hasError('Password', 'required')">
+                    Password is required.
+                </app-input-error>
+                <app-input-error *ngIf="hasError('Password', 'minlength')">
+                    Password must be at least 8 characters.
+                </app-input-error>
+                <app-input-error *ngIf="hasError('Password', 'maxlength')">
+                    Password cannot be more than 128 characters.
+                </app-input-error>
+                <app-input-error *ngIf="hasError('Password', 'passwordMismatch')">
+                    Passwords do not match.
+                </app-input-error>
+            </span>
+        </span>
+
+        <span class="p-float-label">
+            <p-password class="full-width" [feedback]="false" [toggleMask]='true' formControlName="RepeatPassword"
+                minlength="8" maxlength="128" [ngClass]="{'p-inputtext-invalid': isInvalid('RepeatPassword')}" />
+            <label [ngClass]="{'p-invalid': isInvalid('RepeatPassword')}">Repeat Password*</label>
+            <span *ngIf="isInvalid('RepeatPassword')">
+                <app-input-error *ngIf="hasError('RepeatPassword', 'passwordMismatch')">
+                    Passwords do not match.
+                </app-input-error>
+            </span>
+        </span>
+
+        <div class="button-container">
+            <button class="button-primary-stretched" (click)="changeContent()"
+                [ngClass]="{'button-disabled': form.invalid || !(fullnameVisited || emailVisited || phoneVisited || passwordVisited)}"
+                [disabled]="form.invalid || !(fullnameVisited || emailVisited || phoneVisited || passwordVisited)">
+                Continue</button>
+            <p class="text-secondary">Already have an account? <a class="text-link" routerLink="/account/login">Log
+                    in</a></p>
+        </div>
+
+    </form>
+
+    <div class="line-gradient"></div>
+
+    <button class="button-outlined-secondary-stretched">
+        <img ngSrc="assets/icons/google.svg" alt="google" height="24" width="24">
+        Sign up with Google
+    </button>
+
+    <div class="privacy-container">
+        By signing up to create an account I accept
+        <br />
+        Company’s <a href="">Terms of Use and Privacy Policy</a>
+    </div>
+</div>
+
+<div class="main-container" *ngIf="showRoleSelection">
+
+    <button class="floating-button" (click)="changeContent()">
+        <i class="pi pi-angle-left"></i>
+    </button>
+
+    <div class="header-container">
+        <p class="account-header">Sign up</p>
+        <div class="account-subheader">Please choose your role</div>
+    </div>
+
+    <div class="role-input-form">
+        <label style="color:#5C2EFC;" *ngIf="serverSentSuccess"> An email has been sent, please check your inbox and
+            confirm your account. </label>
+
+        <div id="role-section">
+            <section class="role-item" [ngClass]="{'active': valueEqual('UserRole', 1)}" (click)="selectRole(1)">
+                <p-image src="/assets/images/account/tenant-option.svg" />
+                <div class="role-item-title">Tenant</div>
+                <div class="role-item-desc">Seeking long-term residential rental</div>
+            </section>
+
+            <section class="role-item" [ngClass]="{'active': valueEqual('UserRole', 2)}" (click)="selectRole(2)">
+                <p-image src="/assets/images/account/landlord-option.svg" />
+                <div class="role-item-title">Landlord</div>
+                <div class="role-item-desc">Property owner managing rentals</div>
+            </section>
+
+        </div>
+
+        <button [class.button-disabled]="serverSentSuccess" [disabled]="serverSentSuccess" (click)="signUp()"
+            class="button-primary-stretched">Sign up</button>
+
+    </div>
+
+    <div class="line-gradient"></div>
+
+    <div class="privacy-container">
+        By signing up to create an account I accept
+        <br />
+        Company’s <a routerLink="">Terms of Use and Privacy Policy</a>
+    </div>
+
+</div>

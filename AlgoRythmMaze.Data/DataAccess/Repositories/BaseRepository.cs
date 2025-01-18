@@ -1,6 +1,4 @@
 ﻿using AlgoRythmMaze.Domain.Interfaces;
-using AlgoRythmMaze.Domain.Models;
-using AlgoRythmMaze.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
 
@@ -25,15 +23,15 @@ namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
                 await _context.SaveChangesAsync();
                 return true;
             }
-            catch (DbException ex)
+            catch (DbException)
             {
                 return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
-            
+
         }
 
         public async Task DeleteAsync(int id)
@@ -48,7 +46,7 @@ namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
                 _dbSet.Remove(entity);
                 await _context.SaveChangesAsync();
             }
-            
+
         }
 
         public async ValueTask<TEntity> GetByIdAsync(int id)
@@ -64,12 +62,12 @@ namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
                 await _context.SaveChangesAsync();
                 return true;
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException)
             {
                 //TODO: log errors elsewhere
                 return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 return false;
