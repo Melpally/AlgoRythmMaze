@@ -16,17 +16,20 @@ namespace AlgoRythmMaze.Infrastructure.Data.Configurations
             builder
                 .HasOne(x => x.Service)
                 .WithMany()
-                .HasForeignKey(x => x.ServiceId);
+                .HasForeignKey(x => x.ServiceId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .HasOne(x => x.Caregiver)
                 .WithMany()
-                .HasForeignKey(x => x.CaregiverId);
+                .HasForeignKey(x => x.CaregiverId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .HasOne(x => x.Client)
                 .WithMany()
-                .HasForeignKey(x => x.ClientId);
+                .HasForeignKey(x => x.ClientId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

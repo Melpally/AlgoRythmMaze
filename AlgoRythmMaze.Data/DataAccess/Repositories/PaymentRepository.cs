@@ -6,7 +6,7 @@ namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
 {
     public class PaymentRepository : BaseRepository<Payment>, IPaymentRepository
     {
-        public PaymentRepository(DbContext context) : base(context)
+        public PaymentRepository(DataContext context) : base(context)
         {
         }
     }

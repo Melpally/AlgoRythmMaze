@@ -5,6 +5,7 @@ namespace AlgoRythmMaze.Domain.Models
 {
     public class User : IdentityUser<int>
     {
+        public bool IsProfileCompleted { get; set; }
         public required string FullName { get; set; }
         public required UserRole UserRole { get; set; }
         public ClientProfile? ClientProfile { get; set; }

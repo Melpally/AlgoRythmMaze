@@ -1,5 +1,12 @@
+using AlgoRythmMaze.Infrastructure.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using TopiTopi.API.Extensions;
+using TopiTopi.Application.Interfaces;
+using TopiTopi.Application.Services;
+using TopiTopi.Domain.Interfaces;
+using TopiTopi.Infrastructure.ExternalServices;
 
 namespace AlgoRythmMaze
 {
@@ -9,27 +16,50 @@ namespace AlgoRythmMaze
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            var connString = builder.Configuration.GetConnectionString("Database") ?? throw new ArgumentNullException("Connection string is not defined");
-            builder.Services.AddDbContextPool<Infrastructure.Data.DbContext>(
-                options => options.UseSqlServer(connString,
-                    builder =>
-                    {
-                        builder.MigrationsAssembly("AlgoRythmMaze.Infrastructure");
-                    }));
+            builder.WebHost.UseKestrel(options =>
+            {
+                options.Limits.MaxRequestBodySize = 2 * 1024 * 1024;
+            });
 
-            // Add services to the container.
+            builder.Services.AddDataAccess(builder.Configuration);
+
+            builder.Services.AddIdentityRegistry();
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.SlidingExpiration = true;
+                options.Cookie.Name = "IdentityCookie";
+                options.LoginPath = new PathString("/login");
+                options.Cookie.Expiration = TimeSpan.FromMinutes(30);
+                options.AccessDeniedPath = new PathString("/not-found");
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+
+            });
+
+            builder.Services.AddUserSignInManagers();
+
+            builder.Services.AddAuthorization();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGenRegistry();
+
+            builder.Services.AddScoped<IAuthService, AuthService>();
+            builder.Services.AddScoped<IReviewService, ReviewService>();
+            builder.Services.AddScoped<IBookingService, BookingService>();
+            builder.Services.AddScoped<ICalendarService, GoogleCalendarService>();
+
 
             var app = builder.Build();
 
             using (var scope = app.Services.CreateScope())
             {
-                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<int>>>();
                 var roles = builder.Configuration.GetSection("Roles").Get<List<string>>();
+                var db = scope.ServiceProvider.GetRequiredService<DataContext>();
 
                 if (roles != null)
                 {
@@ -37,7 +67,7 @@ namespace AlgoRythmMaze
                     {
                         if (!await roleManager.RoleExistsAsync(role))
                         {
-                            await roleManager.CreateAsync(new IdentityRole(role));
+                            await roleManager.CreateAsync(new IdentityRole<int>(role));
                         }
                     }
                 }
@@ -46,7 +76,7 @@ namespace AlgoRythmMaze
                     throw new ArgumentNullException("Roles", "The roles were not provided.");
                 }
 
-                var db = scope.ServiceProvider.GetRequiredService<Infrastructure.Data.DbContext>();
+                await db.SaveChangesAsync();
                 await db.Database.MigrateAsync();
             }
 

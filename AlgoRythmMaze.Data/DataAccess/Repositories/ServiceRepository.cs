@@ -6,7 +6,7 @@ namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
 {
     public class ServiceRepository : BaseRepository<Service>, IServiceRepository
     {
-        public ServiceRepository(DbContext context) : base(context)
+        public ServiceRepository(DataContext context) : base(context)
         {
         }
     }

@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+// Variables
+$primary-color: #7035cc;
+$secondary-color: #ff5aa4;
+$text-color: #333;
+$bg-light: #e4f0fc;
+$border-radius: 5px;
+$font-family: Arial, sans-serif;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family;
+    color: $text-color;
+    line-height: 1.6;
+}

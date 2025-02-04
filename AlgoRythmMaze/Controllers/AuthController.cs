@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AlgoRythmMaze.Application.Dtos;
+using Microsoft.AspNetCore.Mvc;
+using TopiTopi.Application.Interfaces;
 
 namespace TopiTopi.API.Controllers
 {
@@ -14,8 +16,7 @@ namespace TopiTopi.API.Controllers
         }
 
 
-        // POST api/<AuthController>
-        [HttpPost("register")]
+        [HttpPost("Register")]
         public async Task<IActionResult> Register([FromForm] UserSignUpDto dto)
         {
             var result = await _authService.RegisterAsync(dto);
@@ -28,14 +29,14 @@ namespace TopiTopi.API.Controllers
             return BadRequest(result.Errors);
         }
 
-        [HttpPost("login")]
+        [HttpPost("Login")]
         public async Task<IActionResult> Login([FromForm] UserLoginDto dto)
         {
             var result = await _authService.LoginAsync(dto);
 
             if (result != null)
             {
-                Ok(result);
+                return Ok(result);
             }
 
             return Unauthorized("Invalid Email or Password.");

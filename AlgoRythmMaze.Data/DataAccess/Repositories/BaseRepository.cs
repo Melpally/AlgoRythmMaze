@@ -6,10 +6,10 @@ namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
-        protected readonly Data.DbContext _context;
+        protected readonly Data.DataContext _context;
         protected readonly DbSet<TEntity> _dbSet;
 
-        public BaseRepository(Data.DbContext context)
+        public BaseRepository(Data.DataContext context)
         {
             _context = context;
             _dbSet = _context.Set<TEntity>();

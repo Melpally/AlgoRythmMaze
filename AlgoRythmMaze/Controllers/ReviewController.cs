@@ -16,7 +16,7 @@ namespace TopiTopi.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateReview([FromBody] ReviewCreateDto dto)
+        public async Task<IActionResult> CreateReview([FromForm] ReviewCreateDto dto)
         {
             var result = await _reviewService.CreateReviewAsync(dto);
             if (result)

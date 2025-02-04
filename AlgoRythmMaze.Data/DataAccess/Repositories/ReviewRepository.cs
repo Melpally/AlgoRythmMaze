@@ -6,7 +6,7 @@ namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
 {
     public class ReviewRepository : BaseRepository<Review>, IReviewRepository
     {
-        public ReviewRepository(DbContext context) : base(context)
+        public ReviewRepository(DataContext context) : base(context)
         {
         }
     }

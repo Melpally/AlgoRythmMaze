@@ -31,6 +31,12 @@ namespace TopiTopi.Application.Services
                 return "Login successful.";
             }
 
+            if (result.IsNotAllowed)
+            {
+                _logger.LogWarning($"Login failed for {dto.Email}: Email is not confirmed.");
+                return "Email not confirmed.";
+            }
+
             _logger.LogWarning($"Failed login attempt for user {dto.Email}.");
 
             return null;

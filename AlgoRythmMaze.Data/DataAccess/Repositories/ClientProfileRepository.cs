@@ -6,7 +6,7 @@ namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
 {
     public class ClientProfileRepository : BaseRepository<ClientProfile>, IClientProfileRepository
     {
-        public ClientProfileRepository(DbContext context) : base(context)
+        public ClientProfileRepository(DataContext context) : base(context)
         {
         }
     }

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AlgoRythmMaze.Application.Dtos;
+using Microsoft.AspNetCore.Mvc;
+using TopiTopi.Application.Interfaces;
 
 namespace TopiTopi.API.Controllers
 {
@@ -14,7 +16,7 @@ namespace TopiTopi.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateBooking([FromBody] BookingDto bookingDto)
+        public async Task<IActionResult> CreateBooking([FromForm] BookingDto bookingDto)
         {
             await _bookingService.CreateBookingAsync(bookingDto);
             return Ok("Booking created successfully and synced to Google Calendar.");

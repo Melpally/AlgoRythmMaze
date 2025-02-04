@@ -6,7 +6,7 @@ namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
 {
     public class SkillRepository : BaseRepository<Skill>, ISkillRepository
     {
-        public SkillRepository(DbContext context) : base(context)
+        public SkillRepository(DataContext context) : base(context)
         {
         }
     }

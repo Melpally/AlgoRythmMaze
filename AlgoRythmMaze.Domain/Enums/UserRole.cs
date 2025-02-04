@@ -3,6 +3,7 @@
     public enum UserRole
     {
         Caregiver = 1,
-        CareSeeker = 2
+        CareSeeker = 2,
+        Admin = 3,
     }
 }

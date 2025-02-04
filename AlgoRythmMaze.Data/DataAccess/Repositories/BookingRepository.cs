@@ -6,7 +6,7 @@ namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
 {
     public class BookingRepository : BaseRepository<Booking>, IBookingRepository
     {
-        public BookingRepository(DbContext context) : base(context)
+        public BookingRepository(DataContext context) : base(context)
         {
         }
     }

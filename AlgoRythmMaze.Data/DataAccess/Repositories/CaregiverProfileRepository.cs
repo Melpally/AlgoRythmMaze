@@ -6,7 +6,7 @@ namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
 {
     public class CaregiverProfileRepository : BaseRepository<CaregiverProfile>, ICaregiverProfileRepository
     {
-        public CaregiverProfileRepository(DbContext context) : base(context)
+        public CaregiverProfileRepository(DataContext context) : base(context)
         {
         }
     }

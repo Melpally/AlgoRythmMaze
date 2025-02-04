@@ -11,7 +11,8 @@ namespace AlgoRythmMaze.Infrastructure.Data.Configurations
             builder
                 .HasOne(c => c.User)
                 .WithOne(c => c.CaregiverProfile)
-                .HasForeignKey<CaregiverProfile>(c => c.Id);
+                .HasForeignKey<CaregiverProfile>(c => c.Id)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .HasMany(c => c.Services)
