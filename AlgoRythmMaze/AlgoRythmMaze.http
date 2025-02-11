@@ -1,0 +1,6 @@
+@AlgoRythmMaze_HostAddress = http://localhost:5289
+
+GET {{AlgoRythmMaze_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
