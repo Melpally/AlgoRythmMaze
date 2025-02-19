@@ -28,37 +28,61 @@ namespace TopiTopi.Application.Services
 
             var result = await _reviewRepository.CreateAsync(review);
 
+            await _reviewRepository.UpdateCaregiverRatingAsync(review.CaregiverId);
+
             return result;
         }
 
-        public Task DeleteReviewAsync(int reviewId)
+        public async Task DeleteReviewAsync(int reviewId)
         {
-            throw new NotImplementedException();
+            await _reviewRepository.DeleteAsync(reviewId);
+
         }
 
-        public Task<float> GetCaregiverAverageRatingAsync(int caregiverId)
+        public async Task<List<ReviewDto>> GetCaregiverReviewsAsync(int caregiverId)
         {
-            throw new NotImplementedException();
+            var reviews = await _reviewRepository.GetReviewsByCaregiverIdAsync(caregiverId);
+
+            return reviews.Select(r => new ReviewDto
+            {
+                CaregiverId = r.CaregiverId,
+                CreatedAt = r.CreatedAt,
+                ClientId = r.ClientId,
+                Rating = r.Rating,
+                Title = r.Title,
+                Text = r.Text
+
+            }).ToList();
         }
 
-        public Task<ICollection<ReviewDto>> GetCaregiverReviewsAsync(int caregiverId)
+        public async Task<List<ReviewDto>> GetClientReviewsAsync(int clientId)
         {
-            throw new NotImplementedException();
+            var reviews = await _reviewRepository.GetReviewsByClientIdAsync(clientId);
+
+            return reviews.Select(r => new ReviewDto
+            {
+                CaregiverId = r.CaregiverId,
+                CreatedAt = r.CreatedAt,
+                ClientId = r.ClientId,
+                Rating = r.Rating,
+                Title = r.Title,
+                Text = r.Text
+
+            }).ToList();
         }
 
-        public Task<ICollection<ReviewDto>> GetClientReviewsAsync(int clientId)
+        public async Task<ReviewDto> GetReviewByIdAsync(int reviewId)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<ReviewDto> GetReviewByIdAsync(int reviewId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateReviewAsync(int reviewId)
-        {
-            throw new NotImplementedException();
+            var review = await _reviewRepository.GetByIdAsync(reviewId);
+            return new ReviewDto
+            {
+                Text = review.Text,
+                Title = review.Title,
+                Rating = review.Rating,
+                ClientId = review.ClientId,
+                CreatedAt = review.CreatedAt,
+                CaregiverId = review.CaregiverId
+            };
         }
     }
 }

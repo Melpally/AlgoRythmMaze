@@ -1,5 +1,5 @@
-﻿using AlgoRythmMaze.Application.Dtos;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
+using TopiTopi.Application.Dtos.Auth;
 
 namespace TopiTopi.Application.Interfaces
 {

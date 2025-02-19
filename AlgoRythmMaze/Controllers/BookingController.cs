@@ -15,7 +15,7 @@ namespace TopiTopi.API.Controllers
             _bookingService = bookingService;
         }
 
-        [HttpPost]
+        [HttpPost("/create")]
         public async Task<IActionResult> CreateBooking([FromForm] BookingDto bookingDto)
         {
             await _bookingService.CreateBookingAsync(bookingDto);

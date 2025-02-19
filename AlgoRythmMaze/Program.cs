@@ -48,8 +48,11 @@ namespace AlgoRythmMaze
             builder.Services.AddSwaggerGenRegistry();
 
             builder.Services.AddScoped<IAuthService, AuthService>();
+            builder.Services.AddScoped<IChatService, ChatService>();
             builder.Services.AddScoped<IReviewService, ReviewService>();
             builder.Services.AddScoped<IBookingService, BookingService>();
+            builder.Services.AddScoped<IProfileService, ProfileService>();
+            builder.Services.AddScoped<IMessageService, MessageService>();
             builder.Services.AddScoped<ICalendarService, GoogleCalendarService>();
 
 

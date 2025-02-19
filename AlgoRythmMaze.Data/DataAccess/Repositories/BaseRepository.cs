@@ -64,7 +64,7 @@ namespace AlgoRythmMaze.Infrastructure.DataAccess.Repositories
             }
             catch (DbUpdateException)
             {
-                //TODO: log errors elsewhere
+
                 return false;
             }
             catch (Exception)

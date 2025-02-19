@@ -1,0 +1,12 @@
+<div class="background" (click)="close(); $event.stopPropagation()"></div>
+
+<div class="popup-container">
+  <div class="header-container">
+    <img src="./assets/icons/General/check-circle-broken.svg" alt="">
+    <h1 class="popup-header">{{header}}</h1>
+  </div>
+
+  <p class="popup-text" *ngIf="message">{{message}}</p>
+
+  <button class="button-primary-stretched" (click)="onClick()">{{buttonLabel}}</button>
+</div>
