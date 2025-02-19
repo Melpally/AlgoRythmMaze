@@ -14,7 +14,7 @@ The core functionality to be implemented is the following:
 The previous name of the project was AlgorythmMaze and when adapting it to the new project - TopiTopi, names of the projects have not changed so there is a mix up of names. Sorry for the inconveniences :)
 
 ## Project Structure
-'''
+```
 TopiTopi/
 ├── src/
 │   ├── AlgorythmMaze.API/           # Presentation Layer (API)
@@ -66,7 +66,7 @@ TopiTopi/
 ├── .gitignore
 ├── README.md
 └── TopiTopi.sln                # Solution File
-'''
+```
 
 ## Limitations 
 At the moment, only the sufficient endpoints have been implemented, which will need to be changed.
