@@ -1,8 +1,8 @@
-﻿using AlgoRythmMaze.Application.Dtos;
-using AlgoRythmMaze.Domain.Enums;
+﻿using AlgoRythmMaze.Domain.Enums;
 using AlgoRythmMaze.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
+using TopiTopi.Application.Dtos.Auth;
 using TopiTopi.Application.Interfaces;
 
 namespace TopiTopi.Application.Services

@@ -5,7 +5,8 @@ using AlgoRythmMaze.Infrastructure.DataAccess.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using System.Reflection;
+using TopiTopi.Domain.Interfaces;
+using TopiTopi.Infrastructure.DataAccess.Repositories;
 
 namespace TopiTopi.API.Extensions
 {
@@ -25,6 +26,9 @@ namespace TopiTopi.API.Extensions
             services.AddScoped<IPaymentRepository, PaymentRepository>();
             services.AddScoped<IServiceRepository, ServiceRepository>();
             services.AddScoped<ISkillRepository, SkillRepository>();
+            services.AddScoped<IChatRepository, ChatRepository>();
+            services.AddScoped<IMessageRepository, MessageRepository>();
+
         }
 
         public static void AddIdentityRegistry(this IServiceCollection services)
@@ -74,7 +78,7 @@ namespace TopiTopi.API.Extensions
                         },
                         new string[] {}
                     }
-                }); 
+                });
             });
         }
     }

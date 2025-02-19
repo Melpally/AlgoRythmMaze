@@ -1,0 +1,40 @@
+.error-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    left: 89%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    gap: 12px;
+  }
+  
+  .error-icon {
+    margin-right: 10px;
+  }
+  
+  .tooltip {
+    visibility: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .error-icon:hover + .tooltip {
+    visibility: visible;
+  }
+  
+  .tooltip-content {
+    width: 176px;
+    font-size: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: white;
+    background-color: #ba1a1a;
+    padding: 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    line-height: 16px;
+    word-wrap: break-word;
+  }
+  
